@@ -1,0 +1,7 @@
+.container1{
+    display: flex;
+    justify-content: space-between;
+}
+.item{
+    border-style: dashed;
+}

@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+}
+.item{
+    width: 33%;
+    border: solid ;
+    flex: 1 1 0;
+}
+.item2{
+    flex-grow: 2;
+}

@@ -7,6 +7,7 @@
 body{
     font-family: "inter",sans-serif;
     background-color: black;
+    color: #fff;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -19,7 +20,7 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
-logo{
+.logo{
     font-size: 1.5rem;
     font-weight: bold;
     color: #fff;
@@ -97,12 +98,15 @@ button{
     display: grid;
     grid-template-columns: repeat(auto-fit,
     minmax(280px, 1fr));
+    gap: 2rem
 }
 .card{
     background-color: #111;
     padding: 2rem;
     border-radius: 1rem;
     border: 1px solid #1f1f1f;
+    transition: 0.3s ease;
+    box-shadow: 0 0 0 trasnparent; 
 }
 .car:hover{
     background-color:#1a1a1a;
@@ -117,3 +121,50 @@ button{
     margin-bottom: 1rem;
     opacity: 0.8;
 }
+.card, h3{
+    font-size: 1.1rem;
+    color: #eee;
+    font-weight: 500;
+}
+.clients{
+    max-width: 1000px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+.clients-text, h4{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.5;
+}
+.clients-text, p{
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 2rem;
+}
+.clientes-logos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+}
+.clientes-logos,img{
+    height: 32px;
+    opacity: 0.8;
+    transition: opacity 0.3 ease;
+    filter: grayscale(100%);
+    
+}
+.clientes-logos, img:hover{
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.imagem{
+height: auto;
+filter: none;
+max-width: 400px;
+}
+

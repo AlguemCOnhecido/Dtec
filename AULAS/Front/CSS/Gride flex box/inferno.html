@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Layout de Cards</h1>
+    <style>
+        div.container{
+            border: 2px solid blue;
+            display: grid;
+            grid-template-columns: repeat(3,3fr);
+            grid-template-rows: 3fr 3fr;
+            column-gap: 8px;
+            row-gap: 8px;
+            height: 100vh;
+        }
+        div.amg{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1px;
+        }
+        div.amg1{
+            grid-column: 1/2;
+            grid-row: 1/2;
+            background-color: gray;
+        }
+        div.amg2{
+            grid-column: 2/3;
+            grid-row: 1/2;
+            background-color: gray;
+
+        }
+        div.amg3{
+            grid-column: 3/4;
+            grid-row: 1/2;
+            background-color: gray;
+
+        }
+        div.amg4{
+            grid-column: 1/2;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+        div.amg5{
+            grid-column: 2/3;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+        div.amg6{
+            grid-column: 3/4;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+        
+        
+        div.amg7{
+            grid-column: 3/4;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+        
+        
+        div.amg8{
+            grid-column: 3/4;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+        
+        
+        div.amg9{
+            grid-column: 3/4;
+            grid-row: 2/3;
+            background-color: gray;
+
+        }
+
+    </style>
+    <div class="container">
+        <div class="amg amg1">
+            <img src="https://picsum.photos/225/150?random=1" alt="">
+            <h3><strong>Produtos1</strong></h3>
+            <p>R$ 20</p>
+        </div>
+        <div class="amg amg2">
+            <img src="https://picsum.photos/225/150?random=1" alt="">
+            <h3><strong>Produtos2</strong></h3>
+            <p>R$ 30</p>
+        </div>
+        <div class="amg amg3">
+            <img src="https://picsum.photos/225/150?random=3" alt="">
+            <h3><strong>Produtos3</strong></h3>
+            <p>R$ 40</p>
+        </div>
+        <div class="amg amg4">
+            <img src="https://picsum.photos/225/150?random=3" alt="">
+            <h3><strong>Produto4</strong></h3>
+            <p>R$ 50</p>
+        </div>
+        <div class="amg amg5">
+            <img src="https://picsum.photos/225/150?random=5" alt="">
+            <h3><strong>Produtos5</strong></h3>
+            <p>R$ 60</p>
+        </div>
+        <div class="amg amg6">
+            <img src="https://picsum.photos/225/150?random=5" alt="">
+            <h3><strong>Produtos6</strong></h3>
+            <p>R$ 70</p>
+        </div>
+        
+        <div class="amg amg7">
+            <img src="https://picsum.photos/225/150?random=5" alt="">
+            <h3><strong>Produtos7</strong></h3>
+            <p>R$ 90</p>
+        </div>
+    
+        <div class="amg amg8">
+            <img src="https://picsum.photos/225/150?random=5" alt="">
+            <h3><strong>Produtos8</strong></h3>
+            <p>R$ 110</p>
+        </div>
+            
+        <div class="amg amg9">
+            <img src="https://picsum.photos/225/150?random=5" alt="">
+            <h3><strong>Produtos9</strong></h3>
+            <p>R$ 130</p>
+
+
+</body>
+</html>

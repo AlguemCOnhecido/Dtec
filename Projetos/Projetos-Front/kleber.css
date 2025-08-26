@@ -1,0 +1,4 @@
+.container { display: flex; flex-wrap: wrap; gap: 12px;
+    flex: 0 1 160px;}
+/* Complete a base dos itens:
+.item { flex: 0 1 ____; }  -> use de 140 a 200px como referência */
