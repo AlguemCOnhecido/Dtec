@@ -1,0 +1,25 @@
+body{
+    font-family: sans-serif;
+    max-width: 600PX;
+    margin: 40PX auto;
+    padding: 20px;
+    text-align: center;
+}
+input[type="text"]{
+    padding: 5px;
+    width: 60%;
+}
+button{
+    padding: 8px 15px;
+}
+#container{
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #dfdfdf;
+}
+button:active{
+    background-color: rgb(0, 255, 183);
+    border: 2px solid rgb(0, 102, 136);
+}

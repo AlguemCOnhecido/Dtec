@@ -1,0 +1,24 @@
+.hidden {
+    display: none !important;
+}
+
+.grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.pill[aria-pressed="true"] {
+    background: var(--acc);
+    color: #031525;
+    border-color: transparent;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* mantém proporção */
+    object-fit: cover;
+    /* corta sem distorcer */
+    display: block;
+}

@@ -13,14 +13,14 @@ document.addEventListener('keydown',(event) =>{
 })
 
 buscarBnt.addEventListener('click', () => {
-    const cidade = paisInput.value.trim();
+    const namePais = paisInput.value.trim();
 
-    if(cidade === ""){
+    if(namePais === ""){
         alert('Por Favor, Digite um Pais')
         return;
     }
 
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(cidade)}&format=jsonv2`
+    const url = `https://restcountries.com/v3.1/translation/${namePais}`
 
     container.innerHTML = "<p> Buscando...</p>"; 
 
@@ -33,26 +33,15 @@ buscarBnt.addEventListener('click', () => {
     })
     .then(data => {
         const pais = data[0]
-        const name = pais.display_name;
-
-        const url2 = `https://api.open-meteo.com/v1/forecast?latitude=${pais.lat}.52&longitude=${pais.lon}.41&current=is_day,temperature_2m`
-        fetch(url2)
-        .then(response => {
-        if(!response.ok){
-            throw new Error("Localidade Indisponivel...")
-        };
-        return response.json();
-    })
-        .then(data => {
-            const clima = data
-            const temperatura = clima.current.temperature_2m
-            const dia = clima.current.is_day
-
-        })
+        const moeda = Object.values(pais.currencies)[0].name;
         
-
         container.innerHTML = `
-        <h2>${clima.current.temperature_2m}</h2>
+            <h2>${pais.translations.por.common}</h2>
+            <img src="${pais.flags.svg}" alt="bandeira ${pais.name.common}" width="150">
+            <p><strong>Capital</strong> ${pais.capital[0]}</p>
+            <p><strong>População</strong> ${pais.population.toLocaleString()}</p>
+            <p><strong>Região</strong> ${pais.region}</p>
+            <p><strong>Moeda</strong> ${moeda}</p>
         `
 
         paisInput.value = "";
@@ -63,3 +52,29 @@ buscarBnt.addEventListener('click', () => {
         paisInput.value = "";
     })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+fetch("https://restcountries.com/v3.1/name/Brazil")
+.then(response =>{
+    return response.json();
+})
+.then(data =>{
+    const pais = data[0]
+})
+*/
