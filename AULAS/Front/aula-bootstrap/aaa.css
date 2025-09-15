@@ -1,0 +1,8 @@
+.btn-primary{
+    background-color:black;
+    color: antiquewhite;
+}
+.btn-primary:hover{
+    background-color: rgb(76, 73, 73);
+    color: rgb(193, 223, 250);
+}

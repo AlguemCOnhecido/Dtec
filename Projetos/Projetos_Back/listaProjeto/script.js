@@ -25,7 +25,7 @@ buscarBnt.addEventListener('click', () => {
     container.innerHTML = "<p> Buscando...</p>"; 
 
     fetch(url)
-    .then(response => {
+        .then(response => {
         if(!response.ok){
             throw new Error("Pais não encontrado")
         };
@@ -36,11 +36,11 @@ buscarBnt.addEventListener('click', () => {
         const name = pais.display_name;
 
         const url2 = `https://api.open-meteo.com/v1/forecast?latitude=${pais.lat}.52&longitude=${pais.lon}.41&current=is_day,temperature_2m`
-        fetch(url2)
+    fetch(url2)
         .then(response => {
-        if(!response.ok){
-            throw new Error("Localidade Indisponivel...")
-        };
+            if(!response.ok){
+                throw new Error("Localidade Indisponivel...")
+            };
         return response.json();
     })
         .then(data => {
@@ -52,7 +52,7 @@ buscarBnt.addEventListener('click', () => {
         
 
         container.innerHTML = `
-        <h2>${clima.current.temperature_2m}</h2>
+        <h2 placeholder="--C°">${temperatura}</h2>
         `
 
         paisInput.value = "";
