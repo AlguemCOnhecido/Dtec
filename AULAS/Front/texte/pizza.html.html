@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UX – Persona • Jornada • Dores (Pizzaria)</title>
+    <style>
+        :root {
+            --ink: #181818;
+            --muted: #555;
+            --bg: #fff;
+            --card: #f8f8f8;
+            --accent: #e0e0e0;
+            --primary: #2e7d32;
+            --primary-dark: #205622;
+            --border: #cfcfcf;
+            --focus: #ff9800;
+            --error: #d32f2f;
+        }
+
+        html,
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 12px;
+        }
+
+        header h1 {
+            font-size: 1.7rem;
+            margin: 0 0 .5rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin: .25rem 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        .toolbar {
+            margin: 18px 0 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background .2s;
+            outline: none;
+        }
+
+        .btn:focus-visible {
+            box-shadow: 0 0 0 3px var(--focus);
+            background: var(--primary-dark);
+        }
+
+        .section {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+            margin: 22px 0;
+            box-shadow: 0 2px 8px #0001;
+        }
+
+        .section h2 {
+            margin: 0 0 .5rem;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+
+        .help {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: .98rem;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 0;
+            font-size: 1.02rem;
+        }
+
+        .label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -.5px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--ink);
+            font: inherit;
+            font-size: 1.05rem;
+            margin-top: 2px;
+            transition: border .2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--focus);
+            outline: none;
+            box-shadow: 0 0 0 2px #ff980033;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .row {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: .98rem;
+        }
+
+        .group {
+            padding: 14px;
+            border: 1.5px dashed var(--accent);
+            border-radius: 10px;
+            background: #fff;
+            margin-bottom: 12px;
+        }
+
+        .inline {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .checks {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .checks label {
+            margin: 0;
+            font-weight: 400;
+            font-size: .98rem;
+        }
+
+        .hr {
+            height: 1px;
+            background: var(--accent);
+            margin: 16px 0;
+            border: none;
+        }
+
+        .no-print {}
+
+        .error {
+            color: var(--error);
+            font-size: .97rem;
+            margin-top: 2px;
+            display: none;
+        }
+
+        @media (max-width:700px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 12px;
+            }
+
+            .wrap {
+                padding: 10px 2vw;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="wrap" role="banner">
+        <h1>UX – Persona, Jornada e Dores (Pizzaria)</h1>
+        <p>Preencha o formulário abaixo. Ao final, clique em <b>Baixar PDF</b> para gerar seu relatório completo.</p>
+        <div class="toolbar no-print">
+            <button id="btnDownload" class="btn" aria-label="Baixar PDF do relatório">Baixar PDF</button>
+        </div>
+    </header>
+    <main class="wrap" role="main">
+        <!-- 1) PERSONA -->
+        <section class="section" id="persona" aria-labelledby="persona-title">
+            <h2 id="persona-title">1) Persona</h2>
+            <p class="help">Descreva o usuário típico do site da pizzaria. Foque em 1 objetivo principal e 2–3 dores
+                reais.</p>
+            <div class="row">
+                <label for="nome">
+                    <span class="label">Nome (fictício) <span aria-hidden="true"
+                            style="color:var(--error)">*</span></span>
+                    <input type="text" id="nome" name="nome" placeholder="Ex.: Júlia Ferreira" required
+                        autocomplete="off" />
+                    <span class="error" id="err-nome">Campo obrigatório.</span>
+                </label>
+                <label for="idade">
+                    <span class="label">Idade <span aria-hidden="true" style="color:var(--error)">*</span></span>
+                    <input type="text" id="idade" name="idade" placeholder="Ex.: 22" required inputmode="numeric"
+                        pattern="\d{1,3}" />
+                    <span class="error" id="err-idade">Informe uma idade válida.</span>
+                </label>
+            </div>
+            <label for="contexto">
+                <span class="label">Contexto / Rotina</span>
+                <textarea id="contexto" name="contexto"
+                    placeholder="Ex.: Estudante, pede à noite no celular, orçamento limitado; costuma decidir rápido."></textarea>
+            </label>
+            <label for="objetivo">
+                <span class="label">Objetivo principal ao entrar no site</span>
+                <textarea id="objetivo" name="objetivo"
+                    placeholder="Ex.: Pedir uma pizza metade-metade em até 2 minutos, com entrega prevista."></textarea>
+            </label>
+            <div class="row">
+                <label for="dores">
+                    <span class="label">Frustrações / Dores</span>
+                    <textarea id="dores" name="dores"
+                        placeholder="Ex.: preço escondido; fotos ruins; etapas confusas; pagamento que falha."></textarea>
+                </label>
+                <label for="dispositivo">
+                    <span class="label">Dispositivo / Conexão</span>
+                    <textarea id="dispositivo" name="dispositivo"
+                        placeholder="Ex.: Celular Android simples, 4G instável; uso noturno."></textarea>
+                </label>
+            </div>
+            <label for="acessibilidade">
+                <span class="label">Acessibilidade / Necessidades especiais</span>
+                <textarea id="acessibilidade" name="acessibilidade"
+                    placeholder="Ex.: precisa de fonte legível, contraste alto, botões grandes; evita textos longos."></textarea>
+            </label>
+        </section>
+        <!-- 2) JORNADA -->
+        <section class="section" id="jornada" aria-labelledby="jornada-title">
+            <h2 id="jornada-title">2) Jornada do Usuário</h2>
+            <p class="help">Para cada etapa, descreva: <b>Ação</b>, <b>Emoção</b>, <b>Dor</b> e <b>Oportunidade</b>.</p>
+            <div class="group" aria-label="Etapas da Jornada">
+                <label for="etapa1">
+                    <span class="label">Etapa 1 — Descobrir a pizzaria</span>
+                    <input type="text" id="etapa1" name="etapa1"
+                        placeholder="Ação: Google/Instagram/indicação • Emoção: curioso • Dor: não confia • Oportunidade: avaliações e fotos reais" />
+                </label>
+                <label for="etapa2">
+                    <span class="label">Etapa 2 — Entrar no site</span>
+                    <input type="text" id="etapa2" name="etapa2"
+                        placeholder="Ação: abrir home • Emoção: com fome • Dor: site pesado/confuso • Oportunidade: home leve, foco em mobile" />
+                </label>
+                <label for="etapa3">
+                    <span class="label">Etapa 3 — Ver cardápio/preços</span>
+                    <input type="text" id="etapa3" name="etapa3"
+                        placeholder="Ação: procurar preços • Emoção: avaliando • Dor: preço escondido • Oportunidade: preço/tempo de entrega visíveis" />
+                </label>
+                <label for="etapa4">
+                    <span class="label">Etapa 4 — Montar pedido</span>
+                    <input type="text" id="etapa4" name="etapa4"
+                        placeholder="Ação: escolher tamanho e sabores • Emoção: decidindo • Dor: limite de sabores confuso • Oportunidade: fluxos claros (1/2, 1/3)" />
+                </label>
+                <label for="etapa5">
+                    <span class="label">Etapa 5 — Pagamento</span>
+                    <input type="text" id="etapa5" name="etapa5"
+                        placeholder="Ação: pagar • Emoção: ansioso • Dor: erros no formulário • Oportunidade: validação clara e métodos populares" />
+                </label>
+                <label for="etapa6">
+                    <span class="label">Etapa 6 — Confirmação/Entrega</span>
+                    <input type="text" id="etapa6" name="etapa6"
+                        placeholder="Ação: acompanhar • Emoção: esperando • Dor: sem status do pedido • Oportunidade: tracking simples/tempo estimado" />
+                </label>
+            </div>
+        </section>
+        <!-- 3) DORES & HEURÍSTICAS -->
+        <section class="section" id="dores" aria-labelledby="dores-title">
+            <h2 id="dores-title">3) Dores & Heurísticas de Nielsen</h2>
+            <p class="help">Liste as principais dores observadas no site (ou protótipo) e marque quais heurísticas são
+                violadas.</p>
+            <!-- Dor 1 -->
+            <div class="group" aria-label="Dor 1">
+                <label for="dor1">
+                    <span class="label">Dor 1 — Descreva claramente</span>
+                    <textarea id="dor1" name="dor1"
+                        placeholder="Ex.: Botão 'Finalizar' fica fora da tela no mobile."></textarea>
+                </label>
+                <div class="row">
+                    <label for="impacto1">
+                        <span class="label">Impacto para a persona</span>
+                        <textarea id="impacto1" name="impacto1"
+                            placeholder="Ex.: Persona com pressa desiste antes de concluir."></textarea>
+                    </label>
+                    <label for="prioridade1">
+                        <span class="label">Prioridade</span>
+                        <select id="prioridade1" name="prioridade1">
+                            <option>Alta</option>
+                            <option>Média</option>
+                            <option>Baixa</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <span class="label">Heurísticas violadas (marque):</span>
+                    <div class="checks" role="group" aria-label="Heurísticas Nielsen Dor 1">
+                        <label><input type="checkbox" name="h1-1" /> Status visível</label>
+                        <label><input type="checkbox" name="h1-2" /> Mundo real</label>
+                        <label><input type="checkbox" name="h1-3" /> Controle/liberdade</label>
+                        <label><input type="checkbox" name="h1-4" /> Consistência</label>
+                        <label><input type="checkbox" name="h1-5" /> Prevenção de erros</label>
+                        <label><input type="checkbox" name="h1-6" /> Reconhecer vs lembrar</label>
+                        <label><input type="checkbox" name="h1-7" /> Flexibilidade</label>
+                        <label><input type="checkbox" name="h1-8" /> Minimalismo</label>
+                        <label><input type="checkbox" name="h1-9" /> Mensagens claras</label>
+                        <label><input type="checkbox" name="h1-10" /> Ajuda/documentação</label>
+                    </div>
+                </div>
+                <label for="solucao1">
+                    <span class="label">Solução proposta (HTML/CSS/JS)</span>
+                    <textarea id="solucao1" name="solucao1"
+                        placeholder="Ex.: Tornar CTA fixo (sticky) no rodapé no mobile; aumentar área de toque; foco visível."></textarea>
+                </label>
+            </div>
+            <div class="hr"></div>
+            <!-- Dor 2 -->
+            <div class="group" aria-label="Dor 2">
+                <label for="dor2">
+                    <span class="label">Dor 2 — Descreva claramente</span>
+                    <textarea id="dor2" name="dor2"
+                        placeholder="Ex.: Fotos pouco apetitosas não ajudam a decidir."></textarea>
+                </label>
+                <div class="row">
+                    <label for="impacto2">
+                        <span class="label">Impacto para a persona</span>
+                        <textarea id="impacto2" name="impacto2"
+                            placeholder="Ex.: Persona visual precisa confiar no produto antes de comprar."></textarea>
+                    </label>
+                    <label for="prioridade2">
+                        <span class="label">Prioridade</span>
+                        <select id="prioridade2" name="prioridade2">
+                            <option>Alta</option>
+                            <option>Média</option>
+                            <option>Baixa</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <span class="label">Heurísticas violadas (marque):</span>
+                    <div class="checks" role="group" aria-label="Heurísticas Nielsen Dor 2">
+                        <label><input type="checkbox" name="h2-1" /> Status visível</label>
+                        <label><input type="checkbox" name="h2-2" /> Mundo real</label>
+                        <label><input type="checkbox" name="h2-3" /> Controle/liberdade</label>
+                        <label><input type="checkbox" name="h2-4" /> Consistência</label>
+                        <label><input type="checkbox" name="h2-5" /> Prevenção de erros</label>
+                        <label><input type="checkbox" name="h2-6" /> Reconhecer vs lembrar</label>
+                        <label><input type="checkbox" name="h2-7" /> Flexibilidade</label>
+                        <label><input type="checkbox" name="h2-8" /> Minimalismo</label>
+                        <label><input type="checkbox" name="h2-9" /> Mensagens claras</label>
+                        <label><input type="checkbox" name="h2-10" /> Ajuda/documentação</label>
+                    </div>
+                </div>
+                <label for="solucao2">
+                    <span class="label">Solução proposta (HTML/CSS/JS)</span>
+                    <textarea id="solucao2" name="solucao2"
+                        placeholder="Ex.: Substituir por fotos reais com iluminação quente; legenda com ingredientes e preço."></textarea>
+                </label>
+            </div>
+            <div class="hr"></div>
+            <!-- Dor 3 -->
+            <div class="group" aria-label="Dor 3">
+                <label for="dor3">
+                    <span class="label">Dor 3 — Descreva claramente</span>
+                    <textarea id="dor3" name="dor3"
+                        placeholder="Ex.: Limite de sabores não é respeitado — usuário seleciona 3 e só descobre no final."></textarea>
+                </label>
+                <div class="row">
+                    <label for="impacto3">
+                        <span class="label">Impacto para a persona</span>
+                        <textarea id="impacto3" name="impacto3"
+                            placeholder="Ex.: Perda de tempo; frustração; sensação de erro ‘injusto’."></textarea>
+                    </label>
+                    <label for="prioridade3">
+                        <span class="label">Prioridade</span>
+                        <select id="prioridade3" name="prioridade3">
+                            <option>Alta</option>
+                            <option>Média</option>
+                            <option>Baixa</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <span class="label">Heurísticas violadas (marque):</span>
+                    <div class="checks" role="group" aria-label="Heurísticas Nielsen Dor 3">
+                        <label><input type="checkbox" name="h3-1" /> Status visível</label>
+                        <label><input type="checkbox" name="h3-2" /> Mundo real</label>
+                        <label><input type="checkbox" name="h3-3" /> Controle/liberdade</label>
+                        <label><input type="checkbox" name="h3-4" /> Consistência</label>
+                        <label><input type="checkbox" name="h3-5" /> Prevenção de erros</label>
+                        <label><input type="checkbox" name="h3-6" /> Reconhecer vs lembrar</label>
+                        <label><input type="checkbox" name="h3-7" /> Flexibilidade</label>
+                        <label><input type="checkbox" name="h3-8" /> Minimalismo</label>
+                        <label><input type="checkbox" name="h3-9" /> Mensagens claras</label>
+                        <label><input type="checkbox" name="h3-10" /> Ajuda/documentação</label>
+                    </div>
+                </div>
+                <label for="solucao3">
+                    <span class="label">Solução proposta (HTML/CSS/JS)</span>
+                    <textarea id="solucao3" name="solucao3"
+                        placeholder="Ex.: Bloquear seleção acima de 2; mensagem clara e contagem visual de sabores."></textarea>
+                </label>
+            </div>
+            <details style="margin-top:12px">
+                <summary><b>Guia rápido – 10 Heurísticas de Nielsen</b></summary>
+                <p class="muted">1) Status visível · 2) Mundo real · 3) Controle/liberdade · 4) Consistência · 5)
+                    Prevenção de erros · 6) Reconhecer vs lembrar · 7) Flexibilidade · 8) Minimalismo · 9) Erros claros
+                    · 10) Ajuda</p>
+            </details>
+        </section>
+        <!-- 4) CONEXÃO COM O SITE -->
+        <section class="section" id="site" aria-labelledby="site-title">
+            <h2 id="site-title">4) Conexão com o Site da Pizzaria</h2>
+            <p class="help">Traduza as dores em mudanças concretas no código e defina como medir melhora.</p>
+            <label for="url">
+                <span class="label">URL do protótipo/site (opcional)</span>
+                <input type="url" id="url" name="url" placeholder="https://..." autocomplete="off" />
+            </label>
+            <label for="mudancas">
+                <span class="label">Top 3 mudanças prioritárias</span>
+                <textarea id="mudancas" name="mudancas" placeholder="- Preço e tempo de entrega visíveis na home
+- CTA 'Finalizar pedido' fixo no mobile (sticky)
+- Validação de sabores (máx. 2) com contagem visual"></textarea>
+            </label>
+            <div class="row">
+                <label for="pilares">
+                    <span class="label">Pilares de UX envolvidos</span>
+                    <textarea id="pilares" name="pilares"
+                        placeholder="Ex.: Usabilidade, Acessibilidade, Utilidade, Desejabilidade"></textarea>
+                </label>
+                <label for="criterios">
+                    <span class="label">Critérios de sucesso (métricas)</span>
+                    <textarea id="criterios" name="criterios"
+                        placeholder="Ex.: concluir em < 2 min; erro de formulário < 2%; desistência -30%"></textarea>
+                </label>
+            </div>
+            <label for="riscos">
+                <span class="label">Riscos / Restrições técnicas</span>
+                <textarea id="riscos" name="riscos"
+                    placeholder="Ex.: checkout de terceiros; imagens pesadas; prazos curtos; SEO."></textarea>
+            </label>
+        </section>
+        <!-- 5) ANEXOS -->
+        <section class="section" id="anexos" aria-labelledby="anexos-title">
+            <h2 id="anexos-title">5) Anexos (prints) — opcional</h2>
+            <p class="help">Cole aqui links para imagens/prints que ilustrem as dores.</p>
+            <label for="prints">
+                <span class="label">URLs de prints (um por linha)</span>
+                <textarea id="prints" name="prints" placeholder="https://exemplo.com/print-home.png
+https://exemplo.com/print-checkout.png"></textarea>
+            </label>
+        </section>
+        <!-- Botão final -->
+        <div class="section no-print" style="text-align:center">
+            <button class="btn" id="btnDownload2" aria-label="Baixar PDF do relatório">Baixar PDF</button>
+            <p class="muted" style="margin-top:8px">Dica: na caixa de diálogo, escolha <b>Salvar como PDF</b>.</p>
+        </div>
+    </main>
+    <footer class="wrap" style="padding-bottom:40px">
+        <p class="muted">© Aula de UX – Persona • Jornada • Dores • Pizzaria</p>
+    </footer>
+    <script>
+        // Carrega jsPDF e registra handlers
+        (function loadJsPDF() {
+            const s = document.createElement('script');
+            s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+            s.onload = () => {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', handleDownload);
+                });
+            };
+            s.onerror = () => {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', () => window.print());
+                });
+            };
+            document.head.appendChild(s);
+        })();
+
+        // Validação básica de campos obrigatórios
+        function validateForm() {
+            let ok = true;
+            const nome = document.getElementById('nome');
+            const idade = document.getElementById('idade');
+            const errNome = document.getElementById('err-nome');
+            const errIdade = document.getElementById('err-idade');
+            errNome.style.display = nome.value.trim() ? 'none' : 'block';
+            errIdade.style.display = /^\d{1,3}$/.test(idade.value.trim()) ? 'none' : 'block';
+            if (!nome.value.trim()) { nome.focus(); ok = false; }
+            else if (!/^\d{1,3}$/.test(idade.value.trim())) { idade.focus(); ok = false; }
+            return ok;
+        }
+
+        // Coleta dados da página
+        function collectData() {
+            const data = [];
+            document.querySelectorAll('main .section').forEach(sec => {
+                const title = sec.querySelector('h2')?.textContent || '';
+                const rows = [];
+                sec.querySelectorAll('label').forEach(lab => {
+                    if (lab.querySelector('input[type="checkbox"]')) return;
+                    const q = lab.querySelector('.label')?.textContent || '';
+                    let v = '';
+                    const inp = lab.querySelector('input[type="text"], input[type="url"]');
+                    const ta = lab.querySelector('textarea');
+                    const sel = lab.querySelector('select');
+                    if (inp) v = inp.value;
+                    else if (ta) v = ta.value;
+                    else if (sel) v = sel.options[sel.selectedIndex]?.text || sel.value;
+                    if ((q || v) && (q !== 'Heurísticas violadas (marque):')) {
+                        rows.push({ q, v: v || '—' });
+                    }
+                });
+                sec.querySelectorAll('.checks').forEach(block => {
+                    let q = block.previousElementSibling?.textContent || 'Heurísticas violadas';
+                    const marcados = [];
+                    block.querySelectorAll('input[type="checkbox"]').forEach((c, i) => {
+                        if (c.checked) {
+                            const txt = c.parentElement?.textContent || `Opção ${i + 1}`;
+                            marcados.push(txt.trim());
+                        }
+                    });
+                    rows.push({ q, v: marcados.length ? marcados.join(', ') : '—' });
+                });
+                if (title || rows.length) data.push({ title, rows });
+            });
+            return data;
+        }
+
+        // Gera PDF
+        function generatePDF() {
+            try {
+                const { jsPDF } = window.jspdf || {};
+                if (!jsPDF) {
+                    alert('Não foi possível carregar a biblioteca de PDF. Vamos tentar imprimir a página.');
+                    window.print();
+                    return;
+                }
+                const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+                const margin = 15, lineH = 6;
+                const pageW = doc.internal.pageSize.getWidth();
+                const pageH = doc.internal.pageSize.getHeight();
+                let y = margin;
+                doc.setFont('Helvetica', 'bold');
+                doc.setFontSize(15);
+                doc.text('UX – Persona, Jornada e Dores (Pizzaria)', margin, y); y += 8;
+                doc.setFont('Helvetica', 'normal');
+                doc.setFontSize(10);
+                doc.text(`Gerado em: ${new Date().toLocaleString()}`, margin, y); y += 8;
+                const data = collectData();
+                doc.setFontSize(11);
+                function addWrapped(text, opts = { bold: false }) {
+                    if (!text) return;
+                    doc.setFont('Helvetica', opts.bold ? 'bold' : 'normal');
+                    const lines = doc.splitTextToSize(text, pageW - margin * 2);
+                    lines.forEach(ln => {
+                        if (y > pageH - margin) { doc.addPage(); y = margin; }
+                        doc.text(ln, margin, y);
+                        y += lineH;
+                    });
+                }
+                data.forEach(sec => {
+                    if (y > pageH - margin) { doc.addPage(); y = margin; }
+                    addWrapped(sec.title || 'Seção', { bold: true });
+                    if (y > pageH - margin) { doc.addPage(); y = margin; }
+                    doc.setDrawColor(220); doc.setLineWidth(0.2);
+                    doc.line(margin, y - 2, pageW - margin, y - 2);
+                    sec.rows.forEach(({ q, v }) => {
+                        if (q) addWrapped(q, { bold: true });
+                        if (v) addWrapped(v, { bold: false });
+                        y += 2;
+                    });
+                    y += 2;
+                });
+                doc.save('ux-pizzaria-respostas.pdf');
+            } catch (err) {
+                alert('Ocorreu um erro ao gerar o PDF. Usando impressão como alternativa.');
+                window.print();
+            }
+        }
+
+        // Handler do botão
+        function handleDownload(e) {
+            e.preventDefault();
+            if (!validateForm()) return;
+            generatePDF();
+        }
+    </script>
+</body>
+
+</html>

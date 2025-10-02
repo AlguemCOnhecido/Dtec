@@ -1,0 +1,23 @@
+.carousel-inner {
+    height: 400px;
+    margin-top: 1rem;
+    display: flex;
+    align-items: start;
+    align-content: start;
+}
+.cbc {
+    height: 50px;
+    width: 1400px;
+    background-color: rgb(52, 58, 64);
+    color: azure;
+}
+.badge-secondary {
+    background-color: rgb(3, 201, 13);
+}
+h5{
+    align-items: center;
+    justify-content: center;
+}
+.d-md-block{
+    color: rgb(0, 255, 242);
+}

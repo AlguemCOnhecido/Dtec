@@ -1,8 +1,49 @@
+* {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
 .carousel-inner {
     height: 400px;
     margin-top: 1rem;
     display: flex;
+    align-items: start;
+    align-content: start;
+}
+
+.cbc {
+    height: 50px;
+    width: 1400px;
+    background-color: rgb(52, 58, 64);
+    color: azure;
+}
+
+.badge-secondary {
+    background-color: rgb(3, 201, 13);
+    height: 23px;
+}
+
+.cbc {
+    display: flex;
+    justify-content: center;
+
+    text-align: center;
     align-items: center;
-    align-content: center;
+    height: 80px;
+}
+
+.d-md-block {
+    color: rgb(0, 255, 242);
+}
+
+.card-grid {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 2fr));
+
+    gap: 20px;
+    grid-template-rows: 1fr 1fr; */
+    display: flex;
+    gap: 20px;
+    margin: 10px;
 
 }
