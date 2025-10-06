@@ -1,5 +1,5 @@
 import './Label.css'
-export function label({ children, htmlfor }) {
+export function Label({ children, htmlfor }) {
     return (
         <label htmlFor={htmlfor}>
             {children}
