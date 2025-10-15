@@ -1,10 +1,17 @@
 import '../ListaSuspensa'
 
-export function ListaSuspensa(){
-    return(
-        <select name="lista-suspensa-form">
-            <option value="">Pernanbuco em pé</option>
-            <option value="">Minas</option>
+export function ListaSuspensa({ itens }) {
+    return (
+        <select defaultValue=''name="lista-suspensa-form">
+            <option disabled value="">Selecione uma opção</option>
+            {itens.map(function (item) {
+                return (
+                    <option key={item.id} value={item.id}>
+                        {item.nome}
+                    </option>
+                )
+            }
+            )}
         </select>
     )
 }

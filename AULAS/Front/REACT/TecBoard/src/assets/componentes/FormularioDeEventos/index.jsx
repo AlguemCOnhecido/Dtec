@@ -9,7 +9,9 @@ import { ListaSuspensa } from "../ListaSuspensa";
 
 
 
-export function FormularioDeEvento() {
+
+export function FormularioDeEvento({temas, aoSubmeter}) {
+    
     return (
         <form className='form-evento'>
             <TituloFormulario>Preencha para criar um evento:</TituloFormulario>
@@ -19,6 +21,10 @@ export function FormularioDeEvento() {
                     <Label htmlFor='nome'>Qual é o nome do evento</Label>
                     <CampoDeEntrada type="text" id="nome" placeholder="sumer dev hits" ></CampoDeEntrada>
                 </CampoDeFormulario>
+                
+                <Label htmlFor='capa'>Qual é o endereço da imagem de capa</Label>
+
+                <CampoDeEntrada type='text' id='capa' placeholder='http://...' name='capa'/>
 
                 <CampoDeFormulario>
                     <Label htmlFor='dataEvento'>Qual é a data do evento</Label>
@@ -27,8 +33,7 @@ export function FormularioDeEvento() {
 
                 <CampoDeFormulario>
                     <Label htmlFor='tipoEvento'>qual é o tepo de evento</Label>
-                    <ListaSuspensa>
-                    </ListaSuspensa>
+                    <ListaSuspensa id='tema' name='tema' itens={temas}/>
                 </CampoDeFormulario>
             </div>
             <div className="acoes">
