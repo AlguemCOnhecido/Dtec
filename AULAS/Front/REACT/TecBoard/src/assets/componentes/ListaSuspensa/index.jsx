@@ -1,8 +1,8 @@
 import '../ListaSuspensa'
 
-export function ListaSuspensa({ itens }) {
+export function ListaSuspensa({ itens, ...rest}) {
     return (
-        <select defaultValue=''name="lista-suspensa-form">
+        <select {...rest} defaultValue=''name="lista-suspensa-form">
             <option disabled value="">Selecione uma opção</option>
             {itens.map(function (item) {
                 return (
